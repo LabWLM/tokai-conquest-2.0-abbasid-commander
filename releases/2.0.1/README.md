@@ -1,21 +1,23 @@
-# TOKAI Conquest 2.0.2 Abbasid SDK 1.4.1 Compatibility
+# TOKAI Conquest 2.0.1 Abbasid Critical Bugfix
 
-**Current Release: 2.0.2**
+**Current Release: 2.0.1**
 
-This compatibility hotfix is limited to the **Abbasid 1.3** level contract and targets Portal SDK/game version **1.4.1.0**.
+This release package is limited to the **Abbasid 1.3** level contract.
 
-Build ID: `TOKAI CONQUEST 2.0.2 ABBASID SDK 1.4.1 COMPATIBILITY RELEASE`
+Build ID: `TOKAI CONQUEST 2.0.1 ABBASID CRITICAL BUGFIX RELEASE`
 
-Previous packages remain available under [`releases/2.0.1/`](releases/2.0.1/README.md) and [`releases/2.0/`](releases/2.0/README.md).
+The previous 2.0 package remains available under [`releases/2.0/`](releases/2.0/README.md).
 
-## Changes since 2.0.1
+## Improvements since 2.0
 
-- Migrates Player operations from retired Transform APIs to the supported Teleport path.
-- Changes the TopView body lock so it teleports only when body drift is detected.
-- Passes strict compilation against the Portal SDK 1.4.1 type definitions.
-- Adds no new Commander, UAV, Precision Airstrike, or other gameplay feature.
+- Restores ammo-resupply and team-switch interaction handling.
+- Clears out-of-bounds blackout state on death, undeploy, and redeploy so Commander mode can recover correctly after death.
+- Uses team-relative colors for the Commander result and A-E objective HUD, and keeps the objective HUD in the team-scoped UI.
+- Adds safer ammo-station VFX lookup and re-enables the five Abbasid ammo VFX objects for joining human players.
+- Adds validity guards to kill, assist, revive, and Commander airstrike-credit event handling.
+- Restores the OOB and invisible-wall event routes. Abbasid 1.3 has no applicable OOB test area, so OOB runtime behavior remains unverified in this release.
 
-`runRepelLogic` and the OOB repel route are unreachable on Abbasid 1.3 and have not been verified in-game for this release.
+Verified in-game: startup without runtime errors, ammo resupply, team movement, the top A-E objective display, UAV, Precision Airstrike, and recovery from the death blackout back into Commander mode.
 
 ## Known issues
 
@@ -25,14 +27,14 @@ Previous packages remain available under [`releases/2.0.1/`](releases/2.0.1/READ
 - SFT may temporarily rise to approximately 50.
 - Abbasid 1.3 has no applicable OOB area, so OOB runtime behavior has not been verified.
 
-In-progress TEST.05 and 2.0.3 development artifacts are not included in this release.
+Vote UI, VFX, and performance improvements are in development for 2.0.2. No unfinished 2.0.2 artifact is included here.
 
 ## Portal-Script-Import
 
 Import both files in this directory together through the Portal Script Manager:
 
-- `tokai-conquest-2.0.2-abbasid-sdk141-compatibility-release.ts`
-- `tokai-conquest-2.0.2-abbasid-sdk141-compatibility-release.Strings.json`
+- `tokai-conquest-2.0.1-abbasid-critical-bugfix-release.ts`
+- `tokai-conquest-2.0.1-abbasid-critical-bugfix-release.Strings.json`
 
 The TypeScript and Strings JSON are a paired import. Do not import or replace only one of them.
 
@@ -48,8 +50,8 @@ The TypeScript and Strings JSON are a paired import. Do not import or replace on
 
 | File | SHA-256 |
 | --- | --- |
-| `Portal-Script-Import/tokai-conquest-2.0.2-abbasid-sdk141-compatibility-release.ts` | `BE689C1E7CE696AE3D866132AE60841CEAE8F3CD1681138F492B71F6C2F287BB` |
-| `Portal-Script-Import/tokai-conquest-2.0.2-abbasid-sdk141-compatibility-release.Strings.json` | `6AC00FE4C48344BC48CADDEA4378D94652048BC1DBE4314A21F761FA898629A2` |
+| `Portal-Script-Import/tokai-conquest-2.0.1-abbasid-critical-bugfix-release.ts` | `A731957423372C882595359825FD880DBF7D3DF05213A7BF9DF66305CF0DAFFF` |
+| `Portal-Script-Import/tokai-conquest-2.0.1-abbasid-critical-bugfix-release.Strings.json` | `395EFDB61300BF504D0D5C5EB3C0A5BDD4FC1610922122A6E97B2F653DECE2B3` |
 | `Level-Source/Lab_MP_Abbasid_CustomConquest1.3.tscn` | `55D305ACC2810AE4B250F7CE2357B6E02332A63C14555F7B84DC4BF44702E0DC` |
 | `Portal-Level-Upload/Lab_MP_Abbasid_CustomConquest1.3.spatial.json` | `1D839C35905249B6687AF0C657A452E8EC2624C90CB518CA171230679992757C` |
 
